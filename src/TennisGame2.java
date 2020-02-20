@@ -95,19 +95,28 @@ public class TennisGame2 implements TennisGame
 	}
 
 	private String normal(String score) {
+		String p1resp2="";
 		if (player1Points > 0 && player2Poimts==0)
         {
-            if (player1Points==1)
-                P1res = "Fifteen";
+			p1resp2=P1res;
+            p1resp2 = getLiteral(player1Points);
             if (player1Points==2)
-                P1res = "Thirty";
+            	p1resp2 = "Thirty";
             if (player1Points==3)
-                P1res = "Forty";
+            	p1resp2 = "Forty";
+            P1res=p1resp2;
             
             P2res = "Love";
             score = P1res + "-" + P2res;
         }
 		return score;
+	}
+
+	private String getLiteral(int playerPoints) {
+		String result="";
+		if (playerPoints==1)
+			result = "Fifteen";
+		return result;
 	}
 
 	private String deuce(String score) {
