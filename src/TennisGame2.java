@@ -26,18 +26,24 @@ public class TennisGame2 implements TennisGame
         if (isInAdvantage(player2Points,player1Points))
             score = "Advantage player2";
         
-       
-        
-        if (player1Points>=4 && player2Points>=0 && (player1Points-player2Points)>=2)
+        if (isWiner(player1Points,player2Points))
         {
             score = "Win for player1";
         }
-        if (player2Points>=4 && player1Points>=0 && (player2Points-player1Points)>=2)
+        if (isWiner(player2Points,player1Points))
         {
             score = "Win for player2";
         }
         return score;
     }
+
+	private boolean isWiner2(int firstPlayerPoints, int secondPlayerPoints) {
+		return secondPlayerPoints>=4 && firstPlayerPoints>=0 && (secondPlayerPoints-firstPlayerPoints)>=2;
+	}
+
+	private boolean isWiner(int firstPlayerPoints, int secondPlayerPoints) {
+		return firstPlayerPoints>=4 && secondPlayerPoints>=0 && (firstPlayerPoints-secondPlayerPoints)>=2;
+	}
 
 	private boolean isInAdvantage(int firstPlayerPoints, int secondPlayerPoints) {
 		return firstPlayerPoints > secondPlayerPoints && secondPlayerPoints >= 3;
