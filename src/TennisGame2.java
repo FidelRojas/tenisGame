@@ -21,15 +21,12 @@ public class TennisGame2 implements TennisGame
         
         score = normal(score);
         
-        if (player1Points > player2Points && player2Points >= 3)
-        {
+        if (isInAdvantage(player1Points,player2Points))
             score = "Advantage player1";
-        }
-        
-        if (player2Points > player1Points && player1Points >= 3)
-        {
+        if (isInAdvantage(player2Points,player1Points))
             score = "Advantage player2";
-        }
+        
+       
         
         if (player1Points>=4 && player2Points>=0 && (player1Points-player2Points)>=2)
         {
@@ -41,6 +38,10 @@ public class TennisGame2 implements TennisGame
         }
         return score;
     }
+
+	private boolean isInAdvantage(int firstPlayerPoints, int secondPlayerPoints) {
+		return firstPlayerPoints > secondPlayerPoints && secondPlayerPoints >= 3;
+	}
 
 
 	private String normal(String score) {
@@ -72,17 +73,13 @@ public class TennisGame2 implements TennisGame
 	}
 
 	private String tie(String score) {
-		if (player1Points == player2Points && player1Points < 4)
-        {
-            if (player1Points==0)
-                score = "Love";
-            if (player1Points==1)
-                score = "Fifteen";
-            if (player1Points==2)
-                score = "Thirty";
-            score += "-All";
-        }
+		if (isTie())
+			return getLiteral(player1Points)+ "-All";
 		return score;
+	}
+
+	private boolean isTie() {
+		return player1Points == player2Points && player1Points < 4;
 	}
     
     public void SetP1Score(int number){
