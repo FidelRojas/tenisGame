@@ -17,58 +17,13 @@ public class TennisGame2 implements TennisGame
     public String getScore(){
         String score = "";
         score = tie(score);
-        if (player1Points==player2Poimts && player1Points>=3)
-            score = "Deuce";
+        score = deuce(score);
         
-        if (player1Points > 0 && player2Poimts==0)
-        {
-            if (player1Points==1)
-                P1res = "Fifteen";
-            if (player1Points==2)
-                P1res = "Thirty";
-            if (player1Points==3)
-                P1res = "Forty";
-            
-            P2res = "Love";
-            score = P1res + "-" + P2res;
-        }
-        if (player2Poimts > 0 && player1Points==0)
-        {
-            if (player2Poimts==1)
-                P2res = "Fifteen";
-            if (player2Poimts==2)
-                P2res = "Thirty";
-            if (player2Poimts==3)
-                P2res = "Forty";
-            
-            P1res = "Love";
-            score = P1res + "-" + P2res;
-        }
+        score = normal(score);
+        score = normal1(score);
         
-        if (player1Points>player2Poimts && player1Points < 4)
-        {
-            if (player1Points==2)
-                P1res="Thirty";
-            if (player1Points==3)
-                P1res="Forty";
-            if (player2Poimts==1)
-                P2res="Fifteen";
-            if (player2Poimts==2)
-                P2res="Thirty";
-            score = P1res + "-" + P2res;
-        }
-        if (player2Poimts>player1Points && player2Poimts < 4)
-        {
-            if (player2Poimts==2)
-                P2res="Thirty";
-            if (player2Poimts==3)
-                P2res="Forty";
-            if (player1Points==1)
-                P1res="Fifteen";
-            if (player1Points==2)
-                P1res="Thirty";
-            score = P1res + "-" + P2res;
-        }
+        score = normal2(score);
+        score = normal3(score);
         
         if (player1Points > player2Poimts && player2Poimts >= 3)
         {
@@ -90,6 +45,76 @@ public class TennisGame2 implements TennisGame
         }
         return score;
     }
+
+	private String normal3(String score) {
+		if (player2Poimts>player1Points && player2Poimts < 4)
+        {
+            if (player2Poimts==2)
+                P2res="Thirty";
+            if (player2Poimts==3)
+                P2res="Forty";
+            if (player1Points==1)
+                P1res="Fifteen";
+            if (player1Points==2)
+                P1res="Thirty";
+            score = P1res + "-" + P2res;
+        }
+		return score;
+	}
+
+	private String normal2(String score) {
+		if (player1Points>player2Poimts && player1Points < 4)
+        {
+            if (player1Points==2)
+                P1res="Thirty";
+            if (player1Points==3)
+                P1res="Forty";
+            if (player2Poimts==1)
+                P2res="Fifteen";
+            if (player2Poimts==2)
+                P2res="Thirty";
+            score = P1res + "-" + P2res;
+        }
+		return score;
+	}
+
+	private String normal1(String score) {
+		if (player2Poimts > 0 && player1Points==0)
+        {
+            if (player2Poimts==1)
+                P2res = "Fifteen";
+            if (player2Poimts==2)
+                P2res = "Thirty";
+            if (player2Poimts==3)
+                P2res = "Forty";
+            
+            P1res = "Love";
+            score = P1res + "-" + P2res;
+        }
+		return score;
+	}
+
+	private String normal(String score) {
+		if (player1Points > 0 && player2Poimts==0)
+        {
+            if (player1Points==1)
+                P1res = "Fifteen";
+            if (player1Points==2)
+                P1res = "Thirty";
+            if (player1Points==3)
+                P1res = "Forty";
+            
+            P2res = "Love";
+            score = P1res + "-" + P2res;
+        }
+		return score;
+	}
+
+	private String deuce(String score) {
+		if (player1Points==player2Poimts && player1Points>=3)
+            score = "Deuce";
+		return score;
+	}
 
 	private String tie(String score) {
 		if (player1Points == player2Poimts && player1Points < 4)
