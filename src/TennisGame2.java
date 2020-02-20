@@ -49,14 +49,8 @@ public class TennisGame2 implements TennisGame
 	private String normal3(String score) {
 		if (player2Points>player1Points && player2Points < 4)
         {
-            if (player2Points==2)
-                P2res="Thirty";
-            if (player2Points==3)
-                P2res="Forty";
-            if (player1Points==1)
-                P1res="Fifteen";
-            if (player1Points==2)
-                P1res="Thirty";
+			P2res = getLiteral(player2Points);
+            P1res = getLiteral(player1Points);
             score = P1res + "-" + P2res;
         }
 		return score;
@@ -65,14 +59,8 @@ public class TennisGame2 implements TennisGame
 	private String normal2(String score) {
 		if (player1Points>player2Points && player1Points < 4)
         {
-            if (player1Points==2)
-                P1res="Thirty";
-            if (player1Points==3)
-                P1res="Forty";
-            if (player2Points==1)
-                P2res="Fifteen";
-            if (player2Points==2)
-                P2res="Thirty";
+			P2res = getLiteral(player2Points);
+            P1res = getLiteral(player1Points);
             score = P1res + "-" + P2res;
         }
 		return score;
@@ -80,15 +68,8 @@ public class TennisGame2 implements TennisGame
 
 	private String normal1(String score) {
 		if (player2Points > 0 && player1Points==0)
-        {
-            if (player2Points==1)
-                P2res = "Fifteen";
-            if (player2Points==2)
-                P2res = "Thirty";
-            if (player2Points==3)
-                P2res = "Forty";
-            
-            P1res = "Love";
+        {   P2res = getLiteral(player2Points);
+            P1res = getLiteral(player1Points);
             score = P1res + "-" + P2res;
         }
 		return score;
@@ -98,9 +79,7 @@ public class TennisGame2 implements TennisGame
 	
 		if (player1Points > 0 && player2Points==0)
         {
-			
             P1res = getLiteral(player1Points);
-            
             P2res=getLiteral(player2Points);
             score = P1res + "-" + P2res;
         }
