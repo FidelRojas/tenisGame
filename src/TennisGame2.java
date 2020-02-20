@@ -20,10 +20,6 @@ public class TennisGame2 implements TennisGame
         score = deuce(score);
         
         score = normal(score);
-        score = normal1(score);
-        
-        score = normal2(score);
-        score = normal3(score);
         
         if (player1Points > player2Points && player2Points >= 3)
         {
@@ -49,9 +45,8 @@ public class TennisGame2 implements TennisGame
 	private String normal3(String score) {
 		if (player2Points>player1Points && player2Points < 4)
         {
-			P2res = getLiteral(player2Points);
-            P1res = getLiteral(player1Points);
-            score = P1res + "-" + P2res;
+			
+            score = getLiteral(player1Points) + "-" + getLiteral(player2Points);
         }
 		return score;
 	}
@@ -59,29 +54,26 @@ public class TennisGame2 implements TennisGame
 	private String normal2(String score) {
 		if (player1Points>player2Points && player1Points < 4)
         {
-			P2res = getLiteral(player2Points);
-            P1res = getLiteral(player1Points);
-            score = P1res + "-" + P2res;
+			
+            score = getLiteral(player1Points) + "-" + getLiteral(player2Points);
         }
 		return score;
 	}
 
 	private String normal1(String score) {
 		if (player2Points > 0 && player1Points==0)
-        {   P2res = getLiteral(player2Points);
-            P1res = getLiteral(player1Points);
-            score = P1res + "-" + P2res;
+        {   
+            score = getLiteral(player1Points) + "-" + getLiteral(player2Points);
         }
 		return score;
 	}
 
 	private String normal(String score) {
 	
-		if (player1Points > 0 && player2Points==0)
+		if (player1Points != player2Points)
         {
-            P1res = getLiteral(player1Points);
-            P2res=getLiteral(player2Points);
-            score = P1res + "-" + P2res;
+           
+            score = getLiteral(player1Points) + "-" + getLiteral(player2Points);
         }
 		return score;
 	}
