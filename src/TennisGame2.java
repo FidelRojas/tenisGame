@@ -27,19 +27,13 @@ public class TennisGame2 implements TennisGame
             score = "Advantage player2";
         
         if (isWiner(player1Points,player2Points))
-        {
             score = "Win for player1";
-        }
         if (isWiner(player2Points,player1Points))
-        {
             score = "Win for player2";
-        }
         return score;
     }
 
-	private boolean isWiner2(int firstPlayerPoints, int secondPlayerPoints) {
-		return secondPlayerPoints>=4 && firstPlayerPoints>=0 && (secondPlayerPoints-firstPlayerPoints)>=2;
-	}
+	
 
 	private boolean isWiner(int firstPlayerPoints, int secondPlayerPoints) {
 		return firstPlayerPoints>=4 && secondPlayerPoints>=0 && (firstPlayerPoints-secondPlayerPoints)>=2;
@@ -53,9 +47,7 @@ public class TennisGame2 implements TennisGame
 	private String normal(String score) {
 	
 		if (player1Points != player2Points)
-        {
             score = getLiteral(player1Points) + "-" + getLiteral(player2Points);
-        }
 		return score;
 	}
 
